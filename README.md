@@ -13,50 +13,55 @@
 
 ## 📖 Sobre o projeto
 
-O **Apadrinhamento MK** foi desenvolvido no início de **2025**, durante meus primeiros meses na graduação em Engenharia de Software.
+O **Apadrinhamento MK** foi desenvolvido no meio de **2025**, durante meus primeiros meses na graduação em Engenharia de Software.
 
-A instituição **Meu Kantinho**, responsável por uma tradicional campanha de Apadrinhamento de Natal, enfrentava dificuldades para organizar manualmente os participantes, controlar as escolhas e acompanhar quem já havia sido apadrinhado.
+Na época, minha sogra, **Ana Cloves**, uma das responsáveis pela instituição **Meu Kantinho**, apresentou as dificuldades enfrentadas durante a organização da tradicional campanha de Apadrinhamento de Natal. A partir desse contexto, realizei o levantamento das necessidades do processo e propus uma solução para automatizar toda a campanha.
 
-Após compreender todo o processo, propus o desenvolvimento de uma aplicação web para automatizar essa campanha, oferecendo uma experiência mais simples para os padrinhos e uma gestão muito mais eficiente para a equipe organizadora.
+Antes da aplicação, o controle era realizado manualmente, tornando o acompanhamento dos participantes mais trabalhoso e aumentando o risco de inconsistências.
 
-O sistema foi utilizado durante toda a campanha e cumpriu integralmente seu objetivo.
+Como resultado, desenvolvi uma aplicação web integrada ao **Firebase Firestore**, permitindo que todo o processo acontecesse de forma automática, organizada e com atualização em tempo real.
+
+A solução foi utilizada durante toda a campanha de Natal de 2025 e cumpriu integralmente seu objetivo.
+
 ---
 
 ## 🎯 Objetivo
 
-Desenvolver uma aplicação web para automatizar a campanha de Apadrinhamento de Natal do **Meu Kantinho**, tornando o processo de escolha dos participantes, registro dos padrinhos e acompanhamento das doações mais organizado, transparente e eficiente.
+Desenvolver uma aplicação web capaz de automatizar a campanha de Apadrinhamento de Natal do **Meu Kantinho**, tornando o processo de escolha dos participantes, registro dos padrinhos e acompanhamento das doações mais organizado, transparente e eficiente.
 
 ---
 
 ## 🚩 O problema
 
-Antes da aplicação, a organização da campanha era realizada de forma manual.
+Antes da aplicação, toda a organização da campanha era realizada manualmente.
 
-Isso dificultava o controle dos participantes e aumentava o risco de problemas como:
+Esse processo apresentava desafios como:
 
-- Dois padrinhos escolherem a mesma pessoa;
-- Dificuldade para acompanhar quem já havia sido apadrinhado;
-- Controle descentralizado das informações;
-- Maior tempo gasto pela equipe organizadora.
+- possibilidade de dois padrinhos escolherem o mesmo participante;
+- dificuldade para acompanhar quem já havia sido apadrinhado;
+- informações descentralizadas;
+- maior tempo gasto pela equipe organizadora.
 
-Com dezenas de participantes, esse processo se tornava cada vez mais difícil de administrar.
+Com dezenas de participantes, o gerenciamento da campanha tornava-se cada vez mais complexo.
 
 ---
 
 ## 💡 A solução
 
-A solução desenvolvida consistiu em uma aplicação web integrada ao **Firebase Firestore**, permitindo que todo o processo acontecesse de forma automática.
+A solução consistiu em uma aplicação web integrada ao **Firebase Firestore**, permitindo que todo o fluxo fosse realizado automaticamente.
 
-O fluxo da aplicação era simples:
+Fluxo da aplicação:
 
-1. O visitante acessava o site.
-2. Escolhia um participante disponível.
-3. Informava nome e WhatsApp.
-4. Confirmava o apadrinhamento.
-5. O sistema registrava a informação no Firestore.
-6. O participante era imediatamente marcado como apadrinhado e removido das opções disponíveis para os demais visitantes.
+1. O visitante acessa o site.
+2. Escolhe um participante disponível.
+3. Informa nome e WhatsApp.
+4. Confirma o apadrinhamento.
+5. O sistema registra as informações no Firestore.
+6. O participante é imediatamente marcado como apadrinhado.
+7. O participante deixa de aparecer para novos padrinhos.
 
-Toda a atualização acontecia em tempo real, sem necessidade de recarregar a página.
+Todas as alterações acontecem em tempo real, sem necessidade de atualizar a página.
+
 ---
 
 ## 🛠 Tecnologias Utilizadas
@@ -64,26 +69,26 @@ Toda a atualização acontecia em tempo real, sem necessidade de recarregar a p�
 | Tecnologia | Finalidade |
 |------------|------------|
 | HTML5 | Estrutura da aplicação |
-| CSS3 | Estilização e responsividade |
-| JavaScript (ES Modules) | Lógica da aplicação e manipulação do DOM |
+| CSS3 | Interface responsiva |
+| JavaScript (ES Modules) | Lógica da aplicação |
 | Firebase Firestore | Banco de dados em tempo real |
 | Git | Controle de versão |
-| GitHub | Versionamento e hospedagem do código |
+| GitHub | Versionamento do projeto |
 | Netlify | Deploy da aplicação |
 
 ---
 
 ## ⚙️ Arquitetura da Solução
 
-O projeto foi estruturado utilizando HTML, CSS e JavaScript puro, consumindo o Firebase Firestore como banco de dados em tempo real.
+O projeto foi desenvolvido utilizando HTML, CSS e JavaScript puro, consumindo o Firebase Firestore como banco de dados em tempo real.
 
-Fluxo da aplicação:
+Fluxo geral:
 
 ```text
 Google Forms
         │
         ▼
-Coleta das informações
+Cadastro dos participantes
         │
         ▼
 Firebase Firestore
@@ -92,82 +97,80 @@ Firebase Firestore
 Aplicação Web
         │
         ▼
-Usuário escolhe um participante
+Escolha do participante
         │
         ▼
-Confirma o apadrinhamento
+Registro do padrinho
         │
         ▼
-Firestore atualizado em tempo real
-        │
-        ▼
-Participante indisponível para novas escolhas
+Atualização automática
 ```
 
-Inicialmente os participantes eram cadastrados em um grande arquivo JSON.
+Inicialmente os participantes eram armazenados em um arquivo JSON.
 
-Durante o desenvolvimento, identifiquei que essa abordagem dificultaria a manutenção da aplicação. A solução foi migrar o projeto para o **Firebase Firestore**, permitindo atualização em tempo real, maior escalabilidade e uma gestão muito mais simples dos dados.
+Durante o desenvolvimento, identifiquei que essa abordagem dificultaria a manutenção da aplicação. A migração para o **Firebase Firestore** proporcionou atualização em tempo real, maior escalabilidade e simplificou a gestão dos dados.
+
 ---
 
 ## ✨ Funcionalidades
 
-- Exibição dinâmica dos participantes cadastrados.
-- Atualização em tempo real utilizando o Firebase Firestore.
-- Escolha de um participante através da interface.
-- Modal para confirmação do apadrinhamento.
-- Registro automático do nome e WhatsApp do padrinho.
+- Exibição dinâmica dos participantes.
+- Atualização em tempo real utilizando Firebase Firestore.
+- Escolha de participantes disponíveis.
+- Modal de confirmação.
+- Registro do nome e WhatsApp do padrinho.
 - Bloqueio imediato de participantes já apadrinhados.
-- Área de participantes já confirmados.
-- Feedback visual através de notificações (Toast).
-- Interface responsiva para computadores, tablets e smartphones.
+- Área de participantes confirmados.
+- Notificações (Toast).
+- Interface responsiva para desktop, tablet e smartphone.
 
 ---
 
 ## 📈 Resultados
 
-A aplicação foi utilizada durante toda a campanha de Apadrinhamento de Natal do **Meu Kantinho**, substituindo o controle manual anteriormente utilizado.
+A aplicação substituiu completamente o processo manual utilizado pela instituição durante a campanha de Natal.
 
-Entre os principais resultados alcançados estão:
+Principais resultados:
 
-- Organização centralizada de todos os participantes;
-- Redução do trabalho manual da equipe;
-- Eliminação de conflitos de apadrinhamento duplicado;
-- Atualização automática das informações em tempo real;
-- Exportação final dos registros para planilha Excel, facilitando a organização da entrega das doações.
+- ✅ Centralização das informações.
+- ✅ Redução do trabalho manual.
+- ✅ Eliminação de apadrinhamentos duplicados.
+- ✅ Atualização automática em tempo real.
+- ✅ Exportação final dos registros para planilha Excel.
+- ✅ Utilização durante toda a campanha de 2025.
 
-O projeto atingiu integralmente o objetivo para o qual foi desenvolvido e permaneceu em funcionamento durante toda a campanha.
+O projeto atingiu integralmente os objetivos definidos para sua criação.
 
 ---
 
 ## 🧠 Principais Aprendizados
 
-Este projeto marcou o início da minha experiência prática como desenvolvedor.
+Este projeto marcou minha primeira experiência desenvolvendo uma solução para um problema real.
 
-Durante seu desenvolvimento pude aplicar conceitos de Engenharia de Software em um problema real, aprendendo na prática sobre:
+Durante seu desenvolvimento, pude aplicar conhecimentos relacionados a:
 
-- Levantamento de requisitos;
-- Desenvolvimento orientado à resolução de problemas;
-- Integração com Firebase Firestore;
-- Manipulação do DOM utilizando JavaScript;
-- Organização de código em módulos;
-- Responsividade utilizando CSS;
-- Versionamento com Git e GitHub;
-- Publicação de aplicações utilizando Netlify.
+- levantamento de requisitos;
+- resolução de problemas;
+- manipulação do DOM;
+- integração com Firebase Firestore;
+- JavaScript moderno (ES Modules);
+- responsividade;
+- Git e GitHub;
+- publicação de aplicações utilizando Netlify.
 
-Mais do que desenvolver uma aplicação, este projeto mostrou a importância de compreender a necessidade do cliente antes de escrever qualquer linha de código.
+Mais do que aprender tecnologias, este projeto reforçou a importância de compreender o problema antes de desenvolver qualquer solução.
+
 ---
 
-## 🚀 Como executar o projeto
+## 🚀 Como executar
 
 ```bash
-# Clone este repositório
 git clone git@github.com:brunopessino/apadrinhamento-mk.git
 
-# Acesse a pasta do projeto
 cd apadrinhamento-mk
 ```
 
-Como o projeto utiliza **Firebase Firestore**, é necessário possuir uma configuração válida do Firebase para executar todas as funcionalidades.
+Como a aplicação utiliza **Firebase Firestore**, é necessário possuir uma configuração válida do Firebase para executar todas as funcionalidades.
 
 ---
 
@@ -175,13 +178,13 @@ Como o projeto utiliza **Firebase Firestore**, é necessário possuir uma config
 
 A aplicação foi publicada utilizando a Netlify.
 
-🔗 https://apadrinhamentomk.netlify.app
+🔗 **https://apadrinhamentomk.netlify.app**
 
 ---
 
 ## 📁 Estrutura do projeto
 
-```
+```text
 apadrinhamento-mk/
 │
 ├── images/
@@ -198,17 +201,23 @@ apadrinhamento-mk/
 
 **Bruno Pessino**
 
-Assistente de TI Jr. | Estudante de Engenharia de Software | Desenvolvedor Web
+Assistente de TI Jr.  
+Estudante de Engenharia de Software  
+Desenvolvedor de Software
 
 - GitHub: https://github.com/brunopessino
 - LinkedIn: https://linkedin.com/in/brunopessino
 
 ---
 
-## 📌 Status do Projeto
+## 📌 Status
 
-✅ **Projeto concluído**
+✅ Projeto concluído.
 
-Este projeto foi desenvolvido para atender uma necessidade real da instituição **Meu Kantinho** durante a campanha de Apadrinhamento de Natal de 2025.
+A aplicação foi desenvolvida para atender uma necessidade real da instituição **Meu Kantinho** durante a campanha de Apadrinhamento de Natal de 2025.
 
-Após o encerramento da campanha e o cumprimento de todos os objetivos, o código foi preservado como registro da solução desenvolvida e entregue.
+Após o encerramento da campanha e o cumprimento de todos os objetivos, o código foi preservado como registro da solução desenvolvida.
+
+---
+
+> *"Compreender o problema é o primeiro passo para desenvolver boas soluções."*
